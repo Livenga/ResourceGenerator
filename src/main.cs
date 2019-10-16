@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 
 namespace Liven {
-  public class ResGenMain {
+  public class Program {
     [STAThread]
     public static void Main(string[] args) {
       Application.EnableVisualStyles();

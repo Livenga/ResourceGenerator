@@ -211,6 +211,7 @@ namespace Liven.Forms {
       this.Text          = "Resource Generator";
       this.MainMenuStrip = this.mMain;
       this.Size          = new Size(960, 640);
+      this.Icon          = Liven.Resources.Icon;
 
       this.ResumeLayout(false);
       this.PerformLayout();

@@ -6,11 +6,20 @@ DEFINE  = $(addprefix /define:,$(_DEFINE))
 SRC     = $(subst /,\,$(shell gfind src -name \*.cs))
 
 
-all:
-	$(CSC) /out:bin\$(PRJC).exe /target:exe $(DEFINE) $(SRC)
+default:
+	$(CSC) -out:bin\$(PRJC).debug.exe -target:exe \
+		-resource:$(PRJC).resources \
+		-win32icon:icon.ico \
+		$(DEFINE) \
+		$(SRC)
+
 
 release:
-	$(CSC) /out:bin\$(PRJC).win.exe /target:winexe $(SRC)
+	$(CSC) -out:bin\$(PRJC).exe -target:winexe \
+		-resource:$(PRJC).resources \
+		-win32icon:icon.ico \
+		$(SRC)
+
 
 run:
-	bin\$(PRJC).exe
+	bin\$(PRJC).debug.exe
