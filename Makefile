@@ -1,15 +1,18 @@
 CSC  		= csc
 PRJC    = ResourceGenerator
-_DEFINE = DEBUG
 
-DEFINE  = $(addprefix /define:,$(_DEFINE))
 SRC     = $(subst /,\,$(shell gfind src -name \*.cs))
+
+# DEFINE
+_DEFINE =
+DEFINE  = $(addprefix /define:,$(_DEFINE))
 
 
 default:
 	$(CSC) -out:bin\$(PRJC).debug.exe -target:exe \
 		-resource:$(PRJC).resources \
-		-win32icon:icon.ico \
+		-win32icon:resources\icon.ico \
+		-define:DEBUG \
 		$(DEFINE) \
 		$(SRC)
 
@@ -17,7 +20,8 @@ default:
 release:
 	$(CSC) -out:bin\$(PRJC).exe -target:winexe \
 		-resource:$(PRJC).resources \
-		-win32icon:icon.ico \
+		-win32icon:resources\icon.ico \
+		$(DEFINE) \
 		$(SRC)
 
 
